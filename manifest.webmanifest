@@ -1,0 +1,18 @@
+{
+  "name": "बडा दशैं धुन र गीत - Dashain Songs & Gift Cards",
+  "short_name": "Dashain Geet",
+  "description": "Listen to classic and modern Nepali Dashain songs, Malshree Dhun, create custom festival wishing cards, and read community reviews.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#b81d24",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23b81d24'/><text y='.9em' x='10' font-size='75'>🪔</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

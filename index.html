@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ne" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>बडा दशैं धुन र गीत | Nepali Dashain Songs & Wishing Cards Hub</title>
+  <meta name="description" content="Listen to classic & modern Nepali Dashain songs, Malshree Dhun, create custom festival wishing cards, write reviews, and enjoy 100% offline audio streaming." />
+  <meta name="theme-color" content="#dc2626" />
+  
+  <!-- PWA Manifest & App Icons -->
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪔</text></svg>" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/card-studio.css" />
+  <link rel="stylesheet" href="./css/dark-mode.css" />
+</head>
+<body>
+  <!-- Ambient Festival Glow -->
+  <div class="festival-bg-glow" aria-hidden="true"></div>
+
+  <!-- Offline Connectivity Alert Toast -->
+  <aside id="offlineBanner" class="offline-alert-banner" role="alert" aria-live="polite">
+    <span class="offline-icon">📡</span>
+    <span>तपाईं अफलाइन हुनुहुन्छ (Offline Cache Active) — गीतहरू र कार्डहरू निर्वाध चल्नेछन्!</span>
+  </aside>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar" role="banner">
+    <div class="app-container nav-content">
+      <!-- Brand Logo -->
+      <a href="#songs" class="brand-logo" aria-label="Dashain Geet Hub Home">
+        <div class="brand-icon-wrap" aria-hidden="true">🪔</div>
+        <div class="brand-title">
+          <span class="brand-main">दशैं धुन र गीत</span>
+          <span class="brand-sub">Nepali Dashain Music Hub</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Center Tabs -->
+      <nav class="nav-center-tabs" role="navigation" aria-label="Main Navigation">
+        <button class="nav-tab-btn active" data-view="songs" id="tabSongs">
+          <span>🎵</span> गीतहरू (All Songs)
+        </button>
+        <button class="nav-tab-btn" data-view="cards" id="tabCards">
+          <span>🎨</span> शुभकामना कार्ड (Gift Cards)
+        </button>
+        <button class="nav-tab-btn" data-view="favorites" id="tabFavorites">
+          <span>❤️</span> मनपर्ने (Favorites)
+        </button>
+        <button class="nav-tab-btn" data-view="notifications" id="tabNotifications">
+          <span>🔔</span> सूचना (Alerts)
+        </button>
+        <button class="nav-tab-btn" data-view="backup" id="tabBackup">
+          <span>💾</span> ब्याकअप (Backup)
+        </button>
+      </nav>
+
+      <!-- Nav Action Controls -->
+      <div class="nav-actions">
+        <span id="connectionStatusBadge" class="status-badge online" title="Connection status">🟢 Online</span>
+        
+        <button class="nav-action-btn" id="navNotificationBtn" title="Notification Center" aria-label="Notifications">
+          <span>🔔</span>
+          <span class="notification-badge" id="notificationBadge">2</span>
+        </button>
+
+        <button class="nav-action-btn" id="themeToggleBtn" title="Toggle Dark / Light theme" aria-label="Toggle Theme">
+          ☀️
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Shell -->
+  <main class="app-container" id="mainAppShell" role="main">
+    <!-- Hero Festival Header Banner -->
+    <section class="hero-festival-section" aria-labelledby="heroMainHeading">
+      <div class="hero-content">
+        <div class="festival-pill-badge">
+          <span>🌸</span> बडा दशैं २०८३ विशेष (Bada Dashain Special)
+        </div>
+        <h1 class="hero-title" id="heroMainHeading">
+          नेपाली दशैंका <span class="highlight">कालजयी धुन</span> तथा नयाँ गीतहरू
+        </h1>
+        <p class="hero-subtitle">
+          सुगम पोखरेल, नारायण गोपाल, प्रकाश श्रेष्ठ, कुन्ती मोक्तान र शास्त्रीय मालश्री धुनका वास्तविक गीतहरू सुन्दै आफ्ना प्रियजनलाई शुभकामना कार्ड पठाउनुहोस्।
+        </p>
+
+        <!-- Live Dashain Countdown Ticker -->
+        <div class="countdown-box" title="Countdown to Vijaya Dashami Festival">
+          <span class="countdown-label">⏳ दशैं काउन्टडाउन:</span>
+          <div class="countdown-digits">
+            <div class="time-unit"><span class="time-val" id="cdDays">00</span><span class="time-lbl">Days</span></div>
+            <span class="time-colon">:</span>
+            <div class="time-unit"><span class="time-val" id="cdHours">00</span><span class="time-lbl">Hours</span></div>
+            <span class="time-colon">:</span>
+            <div class="time-unit"><span class="time-val" id="cdMins">00</span><span class="time-lbl">Mins</span></div>
+            <span class="time-colon">:</span>
+            <div class="time-unit"><span class="time-val" id="cdSecs">00</span><span class="time-lbl">Secs</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 1: All Songs & Search/Filters -->
+    <section class="main-view-section active" id="view-songs" aria-label="Song Catalog">
+      <!-- Search & Filters Inject Container -->
+      <div id="filterContainer"></div>
+
+      <!-- Songs Cards Grid -->
+      <div class="songs-grid" id="songsGrid" role="region" aria-label="Song List">
+        <!-- Rendered dynamically by js/components/songList.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: Dashain Wishing Gift Cards Studio -->
+    <section class="main-view-section" id="view-cards" aria-label="Wishing Card Studio">
+      <div id="cardStudioContainer">
+        <!-- Rendered dynamically by js/components/cardStudio.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: My Favorites & Curated Playlists -->
+    <section class="main-view-section" id="view-favorites" aria-label="My Favorites">
+      <div class="card-surface" style="padding: 1.5rem; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--crimson-primary); margin-bottom: 0.25rem;">
+          ❤️ तपाईंले मनपराउनुभएका गीतहरू (My Favorite Songs)
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          तपाईंले सुरक्षित गर्नुभएका सबै मनपर्ने दशैं धुनहरू अफलाइनमा पनि सुरक्षित रहनेछन्।
+        </p>
+      </div>
+      <div class="songs-grid" id="favoritesGrid"></div>
+    </section>
+
+    <!-- VIEW 4: In-App Notifications Center -->
+    <section class="main-view-section" id="view-notifications" aria-label="Notification Center">
+      <div id="notificationsContainer">
+        <!-- Rendered by js/components/notifications.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 5: Data Backup & Sync -->
+    <section class="main-view-section" id="view-backup" aria-label="Data Backup & Sync">
+      <div id="backupContainer">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Persistent Bottom Audio Player Dock -->
+  <aside class="player-dock-wrapper" id="playerDock" aria-label="Music Player Controls">
+    <div class="player-dock-content">
+      <!-- Left Track Info -->
+      <div class="player-track-info">
+        <div class="player-artwork" id="playerArtwork">🪔</div>
+        <div class="player-meta">
+          <div class="player-title-row">
+            <div class="player-title" id="playerTrackTitle">मालश्री धुन (Malshree Dhun)</div>
+            <span class="player-mode-tag" id="playerModeTag">HD Stream</span>
+          </div>
+          <div class="player-artist" id="playerTrackArtist">Traditional Ensemble • 1750</div>
+        </div>
+      </div>
+
+      <!-- Center Playback Controls & Timeline -->
+      <div class="player-center-controls">
+        <div class="controls-row">
+          <button class="ctrl-btn" id="playerShuffleBtn" title="Shuffle (र्‍यान्डम)" aria-label="Shuffle">🔀</button>
+          <button class="ctrl-btn" id="playerPrevBtn" title="Previous Song (अघिल्लो)" aria-label="Previous">⏮</button>
+          <button class="ctrl-btn" id="playerRewind10Btn" title="Rewind 10 seconds" aria-label="Rewind 10 seconds">⏪</button>
+          
+          <button class="ctrl-btn play-pause-btn" id="playerPlayPauseBtn" title="Play / Pause" aria-label="Play or Pause">
+            ▶
+          </button>
+          
+          <button class="ctrl-btn" id="playerForward10Btn" title="Forward 10 seconds" aria-label="Forward 10 seconds">⏩</button>
+          <button class="ctrl-btn" id="playerNextBtn" title="Next Song (पछिल्लो)" aria-label="Next">⏭</button>
+          <button class="ctrl-btn active" id="playerRepeatBtn" title="Repeat (दोहोर्‍याउनुहोस्)" aria-label="Repeat">🔁</button>
+          
+          <!-- Mode Switcher: Original YouTube Track vs Offline Flute Synth -->
+          <button class="ctrl-btn mode-switch-btn" id="playerModeToggleBtn" title="Toggle between Exact Official Song and Offline Flute Synth">
+            <span id="playerModeIcon">🎧</span>
+            <span id="playerModeLabel" class="mode-text">Original Song</span>
+          </button>
+
+          <!-- Expand Cinema Video Modal -->
+          <button class="ctrl-btn video-expand-btn" id="playerExpandVideoBtn" title="Watch Video & Lyrics (भिडियो हेर्नुहोस्)" aria-label="Watch Video">
+            🎬 Video
+          </button>
+        </div>
+
+        <div class="timeline-row">
+          <span class="time-stamp" id="playerCurrentTime">00:00</span>
+          <input type="range" class="seek-bar" id="playerSeekBar" min="0" max="100" value="0" aria-label="Seek progress" />
+          <span class="time-stamp" id="playerTotalTime">04:15</span>
+        </div>
+      </div>
+
+      <!-- Right Controls: Audio Visualizer & Volume -->
+      <div class="player-right-controls">
+        <div class="visualizer-canvas-wrap" title="Audio Spectrum Visualizer">
+          <canvas id="playerVisualizerCanvas" width="100" height="28"></canvas>
+        </div>
+
+        <div class="volume-control-wrap">
+          <button class="ctrl-btn" id="playerMuteBtn" title="Mute / Unmute" aria-label="Mute">🔊</button>
+          <input type="range" class="volume-slider" id="playerVolumeSlider" min="0" max="1" step="0.05" value="0.8" aria-label="Volume" />
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-item active" data-view="songs">
+      <span class="mobile-nav-icon">🎵</span>
+      <span>गीतहरू</span>
+    </button>
+    <button class="mobile-nav-item" data-view="cards">
+      <span class="mobile-nav-icon">🎨</span>
+      <span>कार्ड</span>
+    </button>
+    <button class="mobile-nav-item" data-view="favorites">
+      <span class="mobile-nav-icon">❤️</span>
+      <span>मनपर्ने</span>
+    </button>
+    <button class="mobile-nav-item" data-view="notifications">
+      <span class="mobile-nav-icon">🔔</span>
+      <span>सूचना</span>
+    </button>
+    <button class="mobile-nav-item" data-view="backup">
+      <span class="mobile-nav-icon">💾</span>
+      <span>ब्याकअप</span>
+    </button>
+  </nav>
+
+  <!-- Global Modal Host Container -->
+  <div id="modalContainer"></div>
+
+  <!-- Hidden / Background YouTube Streaming Host Player -->
+  <div id="ytPlayerHost" class="yt-hidden-player-host" aria-hidden="true"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="app-container">
+      <p class="footer-festive-quote">🌸 विजया दशमी तथा शुभ दीपावलीको हार्दिक मंगलमय शुभकामना! 🌸</p>
+      <p>© 2026 Dashain Songs & Gift Cards Hub. Crafted with pride for Nepali music lovers worldwide.</p>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+        🎧 आधिकारिक युट्युब स्ट्रिमिङ (Official YouTube Audio/Video Engine) + १००% अफलाइन बासुरी सिन्थेसाइजर • Secure IndexedDB Storage
+      </p>
+    </div>
+  </footer>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

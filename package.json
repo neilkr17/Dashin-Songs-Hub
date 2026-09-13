@@ -1,0 +1,21 @@
+{
+  "name": "dashain-songs-hub",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Nepali Dashain Songs, In-Browser Music Player, Reviews & Wishing Gift Cards Studio",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "dashain",
+    "nepali-music",
+    "malshree",
+    "festivals",
+    "gift-cards",
+    "audio-player",
+    "pwa"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

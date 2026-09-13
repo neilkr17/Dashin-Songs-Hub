@@ -1,0 +1,197 @@
+/**
+ * Dashain Wishing Gift Card Studio Styles
+ * Interactive Card Editor, High-Res Canvas Display, Sticker Palette, and Sharing
+ */
+
+.card-studio-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+.card-editor-panel {
+  padding: 1.5rem;
+}
+
+.panel-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--crimson-primary);
+  margin-bottom: 0.2rem;
+}
+
+.panel-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Template Chips */
+.template-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.template-card-btn {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0.65rem 0.5rem;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.template-card-btn:hover {
+  transform: scale(1.03);
+}
+
+.template-card-btn.active {
+  border-color: var(--gold-vibrant);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+/* Stickers Picker */
+.stickers-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  padding: 0.75rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+}
+
+.sticker-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.sticker-btn:hover {
+  transform: scale(1.1);
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.sticker-icon {
+  font-size: 1.15rem;
+}
+
+.sticker-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Right: Preview Panel */
+.card-preview-panel {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.preview-header h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.canvas-dimensions {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.25rem;
+  border: 2px solid var(--border-accent);
+}
+
+#dashainCardCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-action-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.social-share-card-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.share-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.share-icon-btn {
+  border: none;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.share-icon-btn:hover {
+  transform: scale(1.06);
+}
+
+.share-icon-btn.whatsapp { background: #25D366; }
+.share-icon-btn.viber { background: #7360F2; }
+.share-icon-btn.facebook { background: #1877F2; }
+
+@media (max-width: 900px) {
+  .card-studio-layout {
+    grid-template-columns: 1fr;
+  }
+}
